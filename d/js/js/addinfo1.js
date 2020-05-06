@@ -1,0 +1,1 @@
+document.write("<option value=\'1\' style=\'background:#99C4E3\'>|-联盟活动</option><option value=\'2\' style=\'background:#99C4E3\'>|-联盟公告</option><option value=\'3\' style=\'background:#99C4E3\'>|-联盟新闻</option>");

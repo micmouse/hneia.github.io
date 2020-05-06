@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta name="keywords" content="猪猪钱罐">
+  <meta name="description" content="猪猪钱罐">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telphone=no, email=no"/>
+  <meta name="HandheldFriendly" content="true">
+  <title>注册</title>
+  <link rel="stylesheet" type="text/css" href="style/main.min.css">
+</head>
+
+<body>
+  <div class="share-top">
+    <img src="images/test-head.jpg" alt="" class="share-img"/>
+    <p class="share-name">疯狂的蜗牛</p>
+    <p class="share-text">在猪猪钱罐创建了钱罐，需要您的加油</p>
+  </div>
+
+  <div class="share-content">
+    <img src="images/share/share-bg.png" alt="" class="share-content-bg"/>
+    <p class="share-content-title">去泰国看星星</p>
+    <p class="share-content-total">目标 50000 元，还差</p>
+    <p class="share-content-surplus"><span>1000.47</span>元</p>
+
+    <div class="share-progress">
+      <div class="share-progress-bg">
+        <div style="width:20%" class="share-progress-content">
+          <div class="share-progress-value"><i></i>100.00%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-container">
+    <a id="invite" href="javascript:void(0);" class="ui-btn ui-btn-main">给好友加油</a>
+    <p class="ui-align-center ui-font-sub-font ui-small">注册成功，好友钱罐立省5元</p>
+    <p class="ui-align-center ui-font-sub-font ui-small ui-pt5">您可获得5000元特权金及0.5%的额外年化收益率</p>
+  </div>
+</body>
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/common.min.js"></script>
+<script>
+  var $captcha = $('.ui-input-btn');
+
+  var sendTimeout;
+  $captcha.one('click', sendCode);
+
+  function sendCode(e) {
+    var $this = $(this);
+    var count = 90;
+
+    //发送验证码操作...
+
+
+    $this.empty().text(count + '秒').addClass('ui-btn-whiteBlack-border').removeClass('ui-btn-main');
+
+    sendTimeout = setInterval(function() {
+      count--;
+
+      if (count < 0) {
+        clearInterval(sendTimeout);
+        $captcha.one('click', sendCode);
+        $this.empty().text('重新发送').addClass('ui-btn-main').removeClass('ui-btn-whiteBlack-border');
+      } else {
+        $this.empty().text(count + '秒');
+      }
+    }, 1000);
+  }
+
+  var $keyHelp = $('.login-key-help');
+
+  $keyHelp.on('click', function() {
+    $.dialog('.login-key-dialog');
+  });
+</script>
+</html>
